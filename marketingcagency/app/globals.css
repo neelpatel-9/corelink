@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 350 50% 20%; /* Rich burgundy for maximum contrast */
+    --card: 0 0% 100%;
+    --card-foreground: 350 50% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 350 50% 20%;
+    --primary: 350 60% 35%; /* Deep burgundy for primary elements */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 25 70% 45%; /* Warm amber for secondary elements */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 350 20% 95%;
+    --muted-foreground: 350 40% 40%;
+    --accent: 350 30% 90%;
+    --accent-foreground: 350 60% 35%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 350 20% 85%;
+    --input: 350 20% 85%;
+    --ring: 350 60% 35%;
+    --radius: 0.5rem;
+    --cosmic: 350 60% 35%; /* Match primary for consistency */
+    --cosmic-light: 350 60% 45%;
+  }
+
+  /* Keep dark theme as is */
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 260 70% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 260 70% 50%;
+    --cosmic: 260 70% 50%;
+    --cosmic-light: 260 70% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .bg-size-200 {
+    background-size: 200% 200%;
+  }
+  .animate-gradient-x {
+    animation: gradient-x 15s ease infinite;
+  }
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  @keyframes gradient-x {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes sunrayPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes waterRipple {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+@keyframes cloudDrift {
+  0% {
+    transform: translateX(0) translateZ(0);
+  }
+  100% {
+    transform: translateX(calc(100vw + 100%)) translateZ(0);
+  }
+}
+
+@keyframes birdFlyRight {
+  0% {
+    transform: translateX(0) translateZ(0);
+  }
+  100% {
+    transform: translateX(calc(100vw + 50px)) translateZ(0);
+  }
+}
+
+@keyframes birdFlyLeft {
+  0% {
+    transform: translateX(0) translateZ(0);
+  }
+  100% {
+    transform: translateX(calc(-100vw - 50px)) translateZ(0);
+  }
+}
+
+@keyframes birdBob {
+  0%,
+  100% {
+    transform: translateY(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(-10px) translateZ(0);
+  }
+}
+
+@keyframes wingFlap {
+  0%,
+  100% {
+    transform: rotate(0) translateZ(0);
+  }
+  50% {
+    transform: rotate(-30deg) translateZ(0);
+  }
+}
+
+@keyframes starTwinkle {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: var(--star-opacity, 0.5);
+  }
+  100% {
+    opacity: var(--star-opacity-dim, 0.3);
+  }
+}
+
+@keyframes nebulaGlow {
+  0% {
+    opacity: 0;
+    scale: 0.8;
+  }
+  50% {
+    opacity: 0.2;
+    scale: 1.1;
+  }
+  100% {
+    opacity: 0;
+    scale: 0.8;
+  }
+}
+
+@keyframes skyShimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  animation: twinkle var(--twinkle-duration, 3s) ease-in-out var(--twinkle-delay, 0s) infinite;
+}
+
+.shooting-star {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(to right, transparent, white, transparent);
+  transform-origin: left center;
+}
+
+/* Update gradient-text to a high-contrast burgundy-amber gradient */
+.gradient-text {
+  background: linear-gradient(to right, #8b0000, #b8860b, #8b0000);
+  background-size: 200% 200%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradient-x 15s ease infinite;
+}
+
+/* Add text shadow for better readability on the background */
+.text-shadow {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-md {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Add a subtle backdrop for text on transparent backgrounds */
+.text-backdrop {
+  position: relative;
+}
+
+.text-backdrop::before {
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  bottom: -0.5rem;
+  left: -0.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 0.5rem;
+  z-index: -1;
+}
